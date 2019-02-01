@@ -11,7 +11,7 @@ class Carousel {
     this.rightBtn.addEventListener("click", () => this.setActiveImg("right"));
   }
   setActiveImg(direction) {
-    // Remove "active-img" class from all images
+    // GSAP: Removes previous active image by applying styles directly
     this.images.forEach(img =>
       TweenMax.to(img, 0, { display: "none", opacity: 0 })
     );
@@ -30,7 +30,7 @@ class Carousel {
         this.currentImgIndex += 1;
       }
     }
-    //
+    // GSAP: Fades in active image by applying styles directly
     TweenMax.to(this.images[this.currentImgIndex], 0, { display: "flex" });
     TweenMax.to(this.images[this.currentImgIndex], 0.5, { opacity: 1 });
   }
