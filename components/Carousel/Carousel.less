@@ -5,6 +5,7 @@
   position: relative;
   overflow: hidden;
   margin-top: 16px;
+  background-color: black; // GSAP: A black background looks better for image fade-in
   @media (min-width: 1200px) {
     width: 1200px;
   }
@@ -38,8 +39,7 @@
   img {
     .width-100();
     display: none;
+    opacity: 0;
   }
-  .active-img {
-    display: flex;
-  }
+  // GSAP: Able to remove "active-img" class entirely
 }

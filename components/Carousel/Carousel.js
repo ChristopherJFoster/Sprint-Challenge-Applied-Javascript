@@ -5,12 +5,17 @@ class Carousel {
     this.rightBtn = this.Carousel.querySelector(".right-button");
     this.images = Array.from(this.Carousel.querySelectorAll("img"));
     this.currentImgIndex = 0;
+    this.images[this.currentImgIndex].style.display = "flex";
+    this.images[this.currentImgIndex].style.opacity = 1;
     this.leftBtn.addEventListener("click", () => this.setActiveImg("left"));
     this.rightBtn.addEventListener("click", () => this.setActiveImg("right"));
   }
   setActiveImg(direction) {
     // Remove "active-img" class from all images
-    this.images.forEach(img => img.classList.remove("active-img"));
+    this.images.forEach(img =>
+      TweenMax.to(img, 0, { display: "none", opacity: 0 })
+    );
+
     // Set currentImgIndex based on which button was clicked
     if (direction === "left") {
       if (this.currentImgIndex === 0) {
@@ -25,8 +30,9 @@ class Carousel {
         this.currentImgIndex += 1;
       }
     }
-    // Apply "active-img" class to image at [currentImgIndex]
-    this.images[this.currentImgIndex].classList.add("active-img");
+    //
+    TweenMax.to(this.images[this.currentImgIndex], 0, { display: "flex" });
+    TweenMax.to(this.images[this.currentImgIndex], 0.5, { opacity: 1 });
   }
 }
 
